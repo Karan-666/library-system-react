@@ -11,6 +11,8 @@ import Header from './components/Header';
 import BrowseBooks from './components/BrowseBooks'
 import AddBook from './components/AddBook.jsx'
 import BookDetails from './components/BookDetails.jsx'
+import {Provider} from 'react-redux';
+import appStore from './utils/appStore.js'
 
 // created router object that defines the path for the website
 // it accepts an array of route objects
@@ -79,6 +81,10 @@ const appRouter = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    {/* Wrapping with provider, entire application now have access to redux store */}
+  <Provider store={appStore}> 
     <RouterProvider router={appRouter} />
-  </StrictMode>,
+    </Provider>
+  </StrictMode>
+  ,
 )

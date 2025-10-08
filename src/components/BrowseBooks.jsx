@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { BOOKS_DATA } from "../data/bookData";
+// import { BOOKS_DATA } from "../data/bookData";
 import BookCard from "./BookCard";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // this will be available at /browser path
 
@@ -12,10 +13,17 @@ function BrowseBooks() {
  const {category} = useParams();
 //  console.log(category, "current category");
 
+// getting data from redux store 
+// store -> We get store from wrapping <provider> in main app
+// books -> as we see in bookSlice.js -> name of slice
+// booksList -> as we see in bookSlice.js -> initial state of books state
+// that makes store.books.booksList
+ const allBooks = useSelector(store => store.books.booksList );
+
   // search and category filter logic
   // this will work even outside any function,
   // as when state change, component re-render
-  const filteredBooks = BOOKS_DATA.filter((item) => {
+  const filteredBooks = allBooks.filter((item) => {
     //filter expects the cb function to return true or false
       return(
       // search filter logic
