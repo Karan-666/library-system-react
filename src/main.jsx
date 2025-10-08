@@ -10,6 +10,7 @@ import HomePage from './components/Homepage';
 import Header from './components/Header';
 import BrowseBooks from './components/BrowseBooks'
 import AddBook from './components/AddBook.jsx'
+import BookDetails from './components/BookDetails.jsx'
 
 // created router object that defines the path for the website
 // it accepts an array of route objects
@@ -64,6 +65,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/add',
         element: <AddBook />
+      },
+      {
+        path: '/book/:id',
+        element: <BookDetails />
       },
     ]
   }
