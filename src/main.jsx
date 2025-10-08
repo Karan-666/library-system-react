@@ -58,6 +58,10 @@ const appRouter = createBrowserRouter([
         element: <BrowseBooks />
       },
       {
+        path: '/browse/:category', // this is dynamic routing // ? -> Question mark mean category part is optional
+        element: <BrowseBooks />
+      },
+      {
         path: '/add',
         element: <AddBook />
       },

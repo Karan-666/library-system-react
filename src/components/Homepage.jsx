@@ -1,10 +1,17 @@
 import React from "react";
 import BookCard from "./BookCard";
+import { Link } from "react-router-dom";
 
 function Homepage() {
   // categories of books we have
   // added dummy categories
-  const categories = ["Fiction", "Non-Fiction", "Sci-Fi", "Fantasy"];
+  const categories = [
+    "Fiction",
+    "Non-Fiction",
+    "Sci-Fi",
+    "Fantasy",
+    "Self-Help",
+  ];
 
   // adding some dummy books
   const popularBooks = [
@@ -13,31 +20,37 @@ function Homepage() {
     { id: 3, title: "Project Hail Mary", author: "Andy Weir" },
   ];
 
-
   // returning jsx to display
   return (
     // main container
-    <div>
-      <h1>Welcome to online library</h1>
-      <h2>Book Categories</h2>
+    // container: sets a fixed width of content which chang based on screen size
+    // mx-auto: centers container horizontally
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4">Welcome to online library</h1>
+      <h2 className="text-xl font-semibold mb-2">Book Categories</h2>
       {/* Displaying all the categories */}
-      <div>
+      {/* Used flex wrap in case categories goes to next line */}
+      <div className="flex flex-wrap gap-2">
         {categories.map((item, index) => (
           // Key attribute Helps React Track Items
-          <div key={index}>{item}</div>
+          <Link key={index} to={`/browse/${item}`}>
+            <div
+              className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg cursor-pointer"
+              key={index}
+            >
+              {item}
+            </div>
+          </Link>
         ))}
       </div>
 
-       <h2>Popular Books</h2> 
-       <div>
-        {
-          popularBooks.map((item) => (
-            // passing whole book object is bookcard component and passing key for react
-            <BookCard key={item.id} bookData={item} />
-          ))
-        }
-       </div>
-
+      <h2>Popular Books</h2>
+      <div>
+        {popularBooks.map((item) => (
+          // passing whole book object is bookcard component and passing key for react
+          <BookCard key={item.id} bookData={item} />
+        ))}
+      </div>
     </div>
   );
 }
