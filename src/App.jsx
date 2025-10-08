@@ -1,13 +1,19 @@
-import React from 'react'
-import Homepage from './components/Homepage'
+import React from "react";
+import Homepage from "./components/Homepage";
+import Header from "./components/Header";
+
+// this will help us to create shared routing layout
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <h1> Hello from App</h1>
-      <Homepage />
+      <Header />
+      {/* Outlet is placeholder for components like homepage or BrowseBooks */}
+      <Outlet /> 
+      {/* will add footer here later */}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
