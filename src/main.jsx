@@ -9,6 +9,7 @@ import { RouterProvider } from 'react-router-dom'
 import HomePage from './components/Homepage';
 import Header from './components/Header';
 import BrowseBooks from './components/BrowseBooks'
+import AddBook from './components/AddBook.jsx'
 
 // created router object that defines the path for the website
 // it accepts an array of route objects
@@ -55,6 +56,10 @@ const appRouter = createBrowserRouter([
       {
         path: '/browse',
         element: <BrowseBooks />
+      },
+      {
+        path: '/add',
+        element: <AddBook />
       },
     ]
   }
