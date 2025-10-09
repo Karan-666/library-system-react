@@ -1,33 +1,70 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+// we exported action as named export, using it here
+import { addBook } from "../utils/bookSlice";
+import { useNavigate } from "react-router-dom";
 
 function AddBook() {
-
   const [formData, setFormData] = useState({
-    title: '',
-    author: '',
-    category: '',
-    description: '',
-    rating: '',
+    title: "",
+    author: "",
+    category: "",
+    description: "",
+    rating: "",
   });
 
-  function handleChange(event){
+  // dispatch function for redux
+  const dispatch = useDispatch();
 
+  // getting the navigate function
+  const navigate = useNavigate();
+
+  function handleChange(event) {
     // destructure target to get current id and value
-    const {id , value} = event.target;
+    const { id, value } = event.target;
 
     //since its async, we get previous data
-    setFormData(prevFormData=> ({...prevFormData, [id]:value}));
+    setFormData((prevFormData) => ({ ...prevFormData, [id]: value }));
     // above code is like setFormData({ ...formData, title: event.target.value });
     // so instead of making handchange function for each form element, we did it one go.
   }
 
-  function handleSubmit(event){
-    // when we clicks the "Add Book" button, 
-    // the form will try to submit and reload the page. 
+  function handleSubmit(event) {
+    // when we clicks the "Add Book" button,
+    // the form will try to submit and reload the page.
     // below code will prevent this defualt behavior
     event.preventDefault();
 
-    console.log("form data submitted:",formData);
+    // Check if any field is empty
+    if (
+      formData.title.trim() === "" ||
+      formData.author.trim() === "" ||
+      formData.category.trim() === "" ||
+      formData.description.trim() === "" ||
+      formData.rating === "" // .trim() is not needed for number input
+    ) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    dispatch(addBook(formData));
+    // dispatch acts like a speacial setter function,
+    // It sends a message to the Redux store to trigger a state change
+
+    // Reset the form fields to be empty
+    setFormData({
+      title: "",
+      author: "",
+      category: "",
+      description: "",
+      rating: "",
+    });
+
+    // Redirect the user to the Browse Books page
+    navigate("/browse");
+
+    console.log("form data submitted:", formData);
   }
 
   return (
@@ -50,7 +87,7 @@ function AddBook() {
           <input
             type="text"
             id="title"
-            value={formData.title} 
+            value={formData.title}
             onChange={handleChange}
             className="border rounded-md w-full p-2"
           />
@@ -66,7 +103,7 @@ function AddBook() {
           <input
             type="text"
             id="author"
-            value={formData.author} 
+            value={formData.author}
             onChange={handleChange}
             className="border rounded-md w-full p-2"
           />
@@ -82,7 +119,7 @@ function AddBook() {
           <input
             type="text"
             id="category"
-            value={formData.category} 
+            value={formData.category}
             onChange={handleChange}
             className="border rounded-md w-full p-2"
           />
@@ -97,7 +134,7 @@ function AddBook() {
           </label>
           <textarea
             id="description"
-            value={formData.description} 
+            value={formData.description}
             onChange={handleChange}
             className="border rounded-md w-full p-2"
           />
@@ -114,15 +151,21 @@ function AddBook() {
             type="number"
             id="rating"
             // rating validation
-            min="1" max="5" step="0.1"
-            value={formData.rating} 
+            min="1"
+            max="5"
+            step="0.1"
+            value={formData.rating}
             onChange={handleChange}
             className="border rounded-md w-full p-2"
           />
         </div>
         {/* Submit button */}
-        <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600">
-          Add Book</button>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600"
+        >
+          Add Book
+        </button>
       </form>
     </div>
   );
