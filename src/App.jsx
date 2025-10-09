@@ -10,7 +10,9 @@ function App() {
     <div>
       <Header />
       {/* Outlet is placeholder for components like homepage or BrowseBooks */}
-      <Outlet /> 
+      <div className="mt-15">
+        <Outlet />
+      </div>
       {/* will add footer here later */}
     </div>
   );

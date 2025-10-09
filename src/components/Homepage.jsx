@@ -26,16 +26,22 @@ function Homepage() {
     // container: sets a fixed width of content which chang based on screen size
     // mx-auto: centers container horizontally
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Welcome to online library</h1>
-      <h2 className="text-xl font-semibold mb-2">Book Categories</h2>
+      <h1 className="text-3xl font-bold mb-4 text-center">
+        Welcome to online library
+      {/* Accent underline */}
+      <div className="w-45 h-1 bg-[#4EDCD8] mx-auto mt-1"></div>
+      </h1>
+      <h2 className="text-xl font-semibold mb-2 text-center">
+        Book Categories
+      </h2>
       {/* Displaying all the categories */}
       {/* Used flex wrap in case categories goes to next line */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="flex flex-wrap gap-2 mb-8 justify-center">
         {categories.map((item, index) => (
           // Key attribute Helps React Track Items
           <Link key={index} to={`/browse/${item}`}>
             <div
-              className="bg-zinc-800 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-zinc-700"
+              className="bg-[#111112] text-[#4EDCD8] px-4 py-2 rounded-lg cursor-pointer hover:bg-slate-800 border border-slate-700"
               key={index}
             >
               {item}
@@ -44,8 +50,10 @@ function Homepage() {
         ))}
       </div>
 
-      <h2 className="text-xl font-semibold mb-4">Popular Books</h2>
-      <div className="flex flex-wrap gap-4">
+      <h2 className="text-xl font-semibold mb-4 text-center">Popular Books
+      </h2>
+      
+      <div className="flex flex-wrap gap-4 justify-center">
         {popularBooks.map((item) => (
           // passing whole book object is bookcard component and passing key for react
           <BookCard key={item.id} bookData={item} />
