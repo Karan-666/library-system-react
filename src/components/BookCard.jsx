@@ -6,7 +6,8 @@ function BookCard({bookData}) {
   // use animation on hover
   // the book object which is passed as props will show all the relevant info
   return (
-    <div className="bg-[#111112] border border-slate-700 rounded-lg p-6 shadow-lg w-64 transform hover:scale-105 transition duration-300 hover:z-10">
+    <div className=" rounded-lg p-6 shadow-lg w-64 transform hover:scale-105 transition duration-300 hover:z-10  bg-gradient-to-br from-slate-900 to-slate-850 border border-slate-700
+                hover:from-teal-950 hover:to-sky-950">
       <h3 className="text-white text-xl font-bold mb-2 truncate">{bookData.title}</h3>
       <p className="text-slate-400">by {bookData.author}</p>
       <div className="mt-4">
