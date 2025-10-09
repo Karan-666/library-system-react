@@ -1,16 +1,32 @@
-# React + Vite
+# My Online Library System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, single-page application built with React, Vite, and Redux Toolkit to manage a collection of books.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Browse Books:** View all books with a search and category filter.
+- **Add Book:** Add a new book to the library using a form.
+- **Book Details:** View detailed information about a single book.
+- **State Management:** Uses Redux Toolkit to manage the list of books.
+- **Routing:** Implemented with React Router DOM for a smooth user experience.
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Follow these steps to get a local copy of the project up and running.
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+You need to have [Node.js](https://nodejs.org/) installed on your machine.
+
+### Installation
+
+1.  Clone the repository
+2.  Navigate to the project directory
+3.  Install dependencies:
+    `npm install`
+
+### Running the Application
+
+1.  Start the development server:
+    `npm run dev`
+2.  Open your browser and visit the URL shown in the terminal (e.g., `http://localhost:5173`).

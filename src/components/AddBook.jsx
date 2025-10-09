@@ -6,6 +6,8 @@ import { addBook } from "../utils/bookSlice";
 import { useNavigate } from "react-router-dom";
 
 function AddBook() {
+
+  //Use State to manage form data
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -14,12 +16,17 @@ function AddBook() {
     rating: "",
   });
 
-  // dispatch function for redux
+  // Redux hook
+  // dispatch function 
   const dispatch = useDispatch();
 
   // getting the navigate function
   const navigate = useNavigate();
 
+
+  //A single handler function for all form inputs
+  // This is a controlled component, so the input value is always in sync with state
+  // it is a handling all input using placeholder for key value
   function handleChange(event) {
     // destructure target to get current id and value
     const { id, value } = event.target;
@@ -30,6 +37,7 @@ function AddBook() {
     // so instead of making handchange function for each form element, we did it one go.
   }
 
+  // Handle form submission
   function handleSubmit(event) {
     // when we clicks the "Add Book" button,
     // the form will try to submit and reload the page.
@@ -49,8 +57,8 @@ function AddBook() {
     }
 
     dispatch(addBook(formData));
-    // dispatch acts like a speacial setter function,
-    // It sends a message to the Redux store to trigger a state change
+    // dispatch acts like an indirect setter function,
+    // It sends a message to the reducer to trigger a state change
 
     // Reset the form fields to be empty
     setFormData({
@@ -70,11 +78,11 @@ function AddBook() {
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Add a new book</h1>
-      {/* Handing on click of submit button action on form tak by handleSubmit */}
+      {/* Handing on-click of submit button action on form tak by handleSubmit */}
       {/* <Form> is designed to handle submission */}
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          {/* title */}
+          {/* ////////title //////////////////*/}
           {/* Label to show what the input field is for */}
           {/* htmlFor is a special attribute that connects a label to an input field. 
           htmlFor value must match the id of the <input> tag. */}
@@ -92,7 +100,7 @@ function AddBook() {
             className="border rounded-md w-full p-2"
           />
         </div>
-        {/* author */}
+        {/* /////////////////author/////////////////// */}
         <div className="mb-4">
           <label
             htmlFor="author"
@@ -108,7 +116,7 @@ function AddBook() {
             className="border rounded-md w-full p-2"
           />
         </div>
-        {/* category */}
+        {/* /////////////////////category/////////////// */}
         <div className="mb-4">
           <label
             htmlFor="category"
@@ -124,7 +132,7 @@ function AddBook() {
             className="border rounded-md w-full p-2"
           />
         </div>
-        {/* description */}
+        {/* ////////////////////description////////////////// */}
         <div className="mb-4">
           <label
             htmlFor="description"
@@ -139,7 +147,7 @@ function AddBook() {
             className="border rounded-md w-full p-2"
           />
         </div>
-        {/* rating */}
+        {/* ////////////////////rating//////////////////// */}
         <div className="mb-4">
           <label
             htmlFor="rating"
@@ -159,7 +167,7 @@ function AddBook() {
             className="border rounded-md w-full p-2"
           />
         </div>
-        {/* Submit button */}
+        {/* /////////////////Submit button////////////////////// */}
         <button
           type="submit"
           className="bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600"
