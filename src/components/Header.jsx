@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 function Header(){
     return(
         // ALl navigation links will go here
-        <nav className="bg-gray-800 text-white p-4">
+        <nav className="bg-gray-900 p-4">
             {/* justify-start -> This tells the browser to push all the items to the beginning of the container. */}
             <ul className="flex justify-start gap-4">
                 <Link to="/" className="hover:text-blue-400">  <li>Home</li> </Link>

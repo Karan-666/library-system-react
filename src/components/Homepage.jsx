@@ -30,12 +30,12 @@ function Homepage() {
       <h2 className="text-xl font-semibold mb-2">Book Categories</h2>
       {/* Displaying all the categories */}
       {/* Used flex wrap in case categories goes to next line */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mb-8">
         {categories.map((item, index) => (
           // Key attribute Helps React Track Items
           <Link key={index} to={`/browse/${item}`}>
             <div
-              className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg cursor-pointer"
+              className="bg-zinc-800 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-zinc-700"
               key={index}
             >
               {item}
@@ -44,8 +44,8 @@ function Homepage() {
         ))}
       </div>
 
-      <h2>Popular Books</h2>
-      <div>
+      <h2 className="text-xl font-semibold mb-4">Popular Books</h2>
+      <div className="flex flex-wrap gap-4">
         {popularBooks.map((item) => (
           // passing whole book object is bookcard component and passing key for react
           <BookCard key={item.id} bookData={item} />

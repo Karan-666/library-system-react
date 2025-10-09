@@ -56,7 +56,17 @@ function AddBook() {
       return;
     }
 
-    dispatch(addBook(formData));
+    // create a new book object (as we need to add id)
+    const newBook = {
+    id: Date.now(), // Use a unique timestamp as the ID
+    title: formData.title,
+    author: formData.author,
+    category: formData.category,
+    description: formData.description,
+    rating: formData.rating,
+  };
+
+    dispatch(addBook(newBook));
     // dispatch acts like an indirect setter function,
     // It sends a message to the reducer to trigger a state change
 

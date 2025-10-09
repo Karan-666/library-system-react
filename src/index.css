@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+body {
+    @apply bg-black text-white
+}
+
+/* The @apply rule is a Tailwind feature that allows us 
+to use Tailwind classes in your CSS file. 
+The bg-black class will change the background of the 
+entire body to black, and the text-white will make
+ all text white for better contrast. */

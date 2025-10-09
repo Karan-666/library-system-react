@@ -39,7 +39,10 @@ function BrowseBooks() {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6">Browser All Books </h1>
+      {/* Showing heading based on weather we came from browse books or came from a category */}
+      <h1 className="text-3xl font-bold mb-6">
+        {category ? `Browse Books in ${category}` : 'Browse All Books'}
+      </h1>
       <div className="mb-6">
         {/* Search input field */}
         <input
