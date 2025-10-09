@@ -13,6 +13,7 @@ import AddBook from './components/AddBook.jsx'
 import BookDetails from './components/BookDetails.jsx'
 import {Provider} from 'react-redux';
 import appStore from './utils/appStore.js'
+import ErrorPage from './components/ErrorPage.jsx'
 
 // created router object that defines the path for the website
 // it accepts an array of route objects
@@ -51,6 +52,8 @@ const appRouter = createBrowserRouter([
   {
     path: '/', // path for home page
     element: <App />,
+    // If no route found, send to this error page
+    errorElement:<ErrorPage />, 
     children: [
       {
         path: '/',

@@ -38,9 +38,9 @@ function BrowseBooks() {
 
 
   return (
-    <div>
-      <h1>Browser All Books </h1>
-      <div>
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-6">Browser All Books </h1>
+      <div className="mb-6">
         {/* Search input field */}
         <input
           type="text"
@@ -48,10 +48,10 @@ function BrowseBooks() {
         //   Make the input controlled
           onChange={(event)=>setSearchText(event.target.value)}
           placeholder="Enter book title or author name..."
-          className="border"
+          className="border border-gray-300 rounded-md p-2 w-full"
         />
       </div>
-      <div>
+      <div className="flex flex-wrap gap-4">
         {filteredBooks.map((item) => (
           <BookCard key={item.id} bookData={item} />
         ))}
